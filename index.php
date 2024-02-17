@@ -1,122 +1,151 @@
 <?php include 'partials/nav.php'; ?>
 
-<!--===========================================================CONTACT SECTION START====================================================-->
-<section id="Contact">
+<?php
 
+// Process form submission for saving contact details
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['save_contact'])) {
+    // Check if all fields are filled
+    if (isset($_POST['mobile']) && isset($_POST['email']) && isset($_POST['address']) && isset($_POST['registration'])) {
+        // Sanitize input data
+        $mobile = mysqli_real_escape_string($conn, $_POST['mobile']);
+        $email = mysqli_real_escape_string($conn, $_POST['email']);
+        $address = mysqli_real_escape_string($conn, $_POST['address']);
+        $registration = mysqli_real_escape_string($conn, $_POST['registration']);
+
+        // SQL query to insert contact details into database
+        $sql = "INSERT INTO contacts (mobile, email, address, registration) VALUES ('$mobile', '$email', '$address', '$registration')";
+
+        // Execute query
+        if (mysqli_query($conn, $sql)) {
+            echo "<script>alert('Contact details saved successfully.')</script>";
+        } else {
+            echo "<script>alert('Error: " . mysqli_error($conn) . "')</script>";
+        }
+    } else {
+        echo "<script>alert('Please fill all fields.')</script>";
+    }
+}
+
+// Process form submission for searching contact details
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['search_contact'])) {
+    // Check if the registration number is provided
+    if (isset($_POST['search_registration'])) {
+        $search_registration = mysqli_real_escape_string($conn, $_POST['search_registration']);
+
+        // SQL query to search for contact details based on registration number
+        $sql = "SELECT * FROM contacts WHERE registration = '$search_registration'";
+
+        // Execute query
+        $result = mysqli_query($conn, $sql);
+
+        if (mysqli_num_rows($result) > 0) {
+            // Display contact details
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<p>Contact Details:</p>";
+                echo "<p>Mobile: " . $row['mobile'] . "</p>";
+                echo "<p>Email: " . $row['email'] . "</p>";
+                echo "<p>Address: " . $row['address'] . "</p>";
+                echo "<p>Registration Number: " . $row['registration'] . "</p>";
+            }
+        } else {
+            echo "<p>No contact found with the provided registration number.</p>";
+        }
+    } else {
+        echo "<p>Please provide a registration number for searching.</p>";
+    }
+}
+?>
+
+<!-- Contact Form -->
+<section id="Contact">
     <a name="Contact">
         <div class="CONTACT">
-
             <div class="ROW">
                 <div>
                     <p class="SECTION_TITLE">Contact Us</p>
                 </div>
             </div>
-
             <div class="CONTACT_TITLE">
-                <p>
-                    Have Any Questions ?
-                </p>
+                <p>Have Any Questions?</p>
             </div>
-
             <div class="CONTACT_BOX">
-
                 <div class="CONTACT_FORM_BOX">
-
                     <div class="Card">
-
                         <div class="ROW1">
-
                             <div class="ROW">
-
-                                <!---=========contact Form=======--->
-                                <form class="GFORM" method="POST" action="">
+                                <!-- Save Contact Form -->
+                                <form class="GFORM" method="POST"
+                                    action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                                     <div class="ROW">
-
                                         <div class="CONTACT_FORM">
-
                                             <div class="CONTACT_FORM_ITEM1">
-
                                                 <div class="FORM_ITEM2">
-
                                                     <div class="FORM_GROUP">
-                                                        <input type="text" name="Name" required class="FORM_CONTROL"
-                                                            placeholder="Name">
+                                                        <input type="text" name="mobile" required class="FORM_CONTROL"
+                                                            placeholder="Mobile">
                                                     </div>
-
                                                 </div>
-
                                                 <div class="FORM_ITEM2">
-
                                                     <div class="FORM_GROUP">
-                                                        <input type="email" name="Email" required id="GMAIL"
+                                                        <input type="email" name="email" required id="GMAIL"
                                                             class="FORM_CONTROL" placeholder="Email">
                                                     </div>
-
                                                 </div>
-
                                             </div>
-
                                             <div class="ROW">
-
                                                 <div class="FORM_ITEM">
-
                                                     <div class="FORM_GROUP">
-                                                        <input type="text" name="Subject" required class="FORM_CONTROL"
-                                                            placeholder="Subject">
+                                                        <input type="text" name="address" required class="FORM_CONTROL"
+                                                            placeholder="Address">
                                                     </div>
-
                                                 </div>
-
                                             </div>
-
                                             <div class="ROW">
-
                                                 <div class="FORM_ITEM">
-
                                                     <div class="FORM_GROUP">
-                                                        <textarea name="Message" required
-                                                            class="FORM_CONTROL_MESSAGE h-56 scroll p-5" id=""
-                                                            placeholder="Message"></textarea>
+                                                        <input type="text" name="registration" required
+                                                            class="FORM_CONTROL" placeholder="Registration Number">
                                                     </div>
-
                                                 </div>
-
                                             </div>
-
                                             <div>
-                                                <input type="submit" class="btn SUBMIT_BTN" value="Send">
+                                                <input type="submit" name="save_contact" class="btn SUBMIT_BTN"
+                                                    value="Save Contact">
                                             </div>
-
                                         </div>
-
                                     </div>
                                 </form>
-
+                                <!-- Search Contact Form -->
+                                <form class="GFORM" method="POST"
+                                    action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                                    <div class="ROW">
+                                        <div class="CONTACT_FORM">
+                                            <div class="ROW">
+                                                <div class="FORM_ITEM">
+                                                    <div class="FORM_GROUP">
+                                                        <input type="text" name="search_registration" required
+                                                            class="FORM_CONTROL"
+                                                            placeholder="Enter Registration Number to Search">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <input type="submit" name="search_contact" class="btn SUBMIT_BTN"
+                                                    value="Search Contact">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-
                             <div class="CONTACT_MAP">
-                                <div>
-
-                                    <iframe class="CONTACT_MAP_ITEM"
-                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.801298645712!2d35.96237177376088!3d-0.16736423542419843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1829f6f367bba6d9%3A0x363c14244dccdde!2sKabarak%20University!5e0!3m2!1sen!2ske!4v1690535122863!5m2!1sen!2ske"
-                                        style="border:0;" allowfullscreen="" loading="lazy"
-                                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-                                </div>
+                                <!-- Google Maps Embed -->
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
     </a>
-
 </section>
-<!--===========================================================CONTACT SECTION END====================================================-->
 
 <?php include 'partials/footer.php'; ?>

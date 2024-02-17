@@ -231,6 +231,7 @@ nav{
 
 .logo a span{
     color: var(--primary);
+    font-family: Clicker Script;
     font-size: 35px;
     margin-top: -5px;
 }
@@ -388,10 +389,103 @@ ul li a:hover{
 
 
 /* ====================================================================================================================
+================================  HOME PAGE  ==============================================================
+==================================================================================================================== */
+.HOME{
+  height: 90vh;
+  padding-top: 20px;
+  padding-left: 130px;
+  background-image: url(../images/bg3.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.home-text{
+  height: 100%;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.submit{
+  position: relative;
+  width: 100%;
+}
+
+.btn{
+  width: fit-content;
+  padding: 10px 20px;
+  background: var(--primary);
+  border-radius: 7px;
+  outline: transparent;
+  border: transparent;
+  font-size: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover{
+  background: var(--primary2);
+}
+
+.btn-submit{
+  position: absolute;
+  right: 44px;
+  top: 0px;
+}
+
+.TXT1{
+  color: var(--primary);
+  font-size: 75px;
+}
+
+.TXT2{
+  color: white;
+  font-size: 50px;
+}
+
+.SEARCH-FORM{
+  display: flex;
+  gap: 10px;
+}
+
+.SEARCH_GROUP{
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.BACK{
+  backdrop-filter: blur(25px);
+  border-radius: 30px;
+  padding: 10px 35px;
+  font-size: 20px;
+}
+
+.SEARCH_CONTROL{
+  width: 200px;
+  height: 50px;
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-size: 18px;
+  outline: transparent;
+  border: transparent;
+  background: var(--bg_bright);
+  color: var(--white);
+}
+
+
+
+/* ====================================================================================================================
 ================================  LOGIN PAGE  ==============================================================
 ==================================================================================================================== */
 .login {
-  background: url(../images/5.jpg);
+  background: url(../images/bg11.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -436,7 +530,7 @@ ul li a:hover{
 ================================  REGISTER PAGE  ==============================================================
 ==================================================================================================================== */
 .register {
-  background: url(../images/3.jpg);
+  background: url(../images/bg4.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -472,7 +566,7 @@ ul li a:hover{
 ================================  RESET PASSWORD PAGE  ==============================================================
 ==================================================================================================================== */
 .resetPassword {
-  background: url(../images/1.jpg);
+  background: url(../images/bg8.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
