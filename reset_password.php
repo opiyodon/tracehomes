@@ -24,12 +24,12 @@
                 unset($_SESSION['message']);
             }
             ?>
-            <h1>Forgot Password</h1>
+            <h1>Reset Password</h1>
             <div>
-                <input required class="INPUT" type="email" name="email" placeholder="Enter your email">
+                <input required class="INPUT" type="password" name="password" placeholder="Enter New Password...">
             </div>
             <div>
-                <input type="submit" name="submit" value="Reset Password" class="btn">
+                <input type="submit" name="submit" value="Save" class="btn">
             </div>
         </form>
     </div>
@@ -58,31 +58,39 @@
 
 <?php
 //Check whether the submit button is clicked or not
-if (isset($_POST['submit'])) {
-    $email = $_POST['email'];
+if (isset($_GET['token'])) {
+    $token = $_GET['token'];
 
-    // Generate a random password reset token
-    $token = bin2hex(random_bytes(32));
-
-    // Store the token in the database along with the user's email
-    $sql = "UPDATE user SET reset_token='$token' WHERE email='$email'";
+    // Validate the reset token
+    $sql = "SELECT * FROM user WHERE reset_token='$token'";
     $res = mysqli_query($conn, $sql);
 
-    if ($res) {
-        // Send reset password email
-        $to = $email;
-        $subject = 'Reset Your Password';
-        $message = 'Click the following link to reset your password: ' . SITEURL_USER . 'resetpassword.php?token=' . $token;
-        $headers = 'From: opiyodon9@gmail.com';
+    if (mysqli_num_rows($res) == 1) {
+        if (isset($_POST['submit'])) {
+            $password = md5($_POST['password']);
+            $row = mysqli_fetch_assoc($res);
+            $email = $row['email'];
 
-        if (mail($to, $subject, $message, $headers)) {
-            $_SESSION['message'] = "<div class='SUCCESS'>Reset password link sent to your email</div>";
-        } else {
-            $_SESSION['message'] = "<div class='ERROR'>Failed to send reset password link</div>";
+            // Update the user's password
+            $sql = "UPDATE user SET password='$password', reset_token=NULL WHERE email='$email'";
+            $res = mysqli_query($conn, $sql);
+
+            if ($res) {
+                $_SESSION['message'] = "<div class='SUCCESS'>Password reset successfully</div>";
+                header('location:' . SITEURL_USER . 'login.php');
+                exit();
+            } else {
+                $_SESSION['message'] = "<div class='ERROR'>Failed to reset password</div>";
+            }
         }
     } else {
-        $_SESSION['message'] = "<div class='ERROR'>Email not found</div>";
+        $_SESSION['message'] = "<div class='ERROR'>Invalid reset token</div>";
+        header('location:' . SITEURL_USER . 'forgotpassword.php');
+        exit();
     }
+} else {
+    $_SESSION['message'] = "<div class='ERROR'>Token not provided</div>";
+    header('location:' . SITEURL_USER . 'forgotpassword.php');
+    exit();
 }
-
 ?>
