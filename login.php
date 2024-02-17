@@ -1,11 +1,13 @@
-<?php include('config/constants.php'); ?>
+<?php include 'config/constants.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homeverse</title>
-    <link href="images/bg5.jpg" type="image/x-icon" rel="icon">
+    <title>
+        Tracehomes
+    </title>
+    <link href="images/logo.jpg" type="image/x-icon" rel="icon">
     <link href="css/style.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -17,7 +19,7 @@
         <div class="ring"></div>
         <div class="ring"></div>
         <div class="ring"></div>
-        <span class="loading">Homeverse</span>
+        <span class="loading">Tracehomes</span>
     </div>
 </div>
 

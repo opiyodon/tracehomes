@@ -1,7 +1,7 @@
 <?php
 
-include('config/constants.php');
-include('login_check.php');
+include 'config/constants.php';
+include 'login_check.php';
 
 ?>
 
@@ -11,13 +11,13 @@ include('login_check.php');
 
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>
-		Homeverse
-	</title>
-	<link  href="images/bg5.jpg"  type="image/x-icon" rel="icon">
-	<link  href="css/style.css"  type="text/css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Tracehomes
+    </title>
+    <link href="images/logo.jpg" type="image/x-icon" rel="icon">
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body class="DARK_MODE">
@@ -28,7 +28,7 @@ include('login_check.php');
             <div class="ring"></div>
             <div class="ring"></div>
             <div class="ring"></div>
-            <span class="loading">Homeverse</span>
+            <span class="loading">Tracehomes</span>
         </div>
     </div>
 
@@ -39,8 +39,8 @@ include('login_check.php');
 		<nav>
             <div class="logo">
 				<a href="index.php">
-					<img src="images/bg5.jpg" alt="Homeverse Logo">
-					Home<span>verse.</span>
+					<img src="images/bg5.jpg" alt="Tracehomes Logo">
+					Trace<span>homes.</span>
 				</a>
 			</div>
             <menu class="NAV_TOGGLER_MENU /// NAV_TOGGLER_CLOSE">
@@ -54,22 +54,13 @@ include('login_check.php');
                         <a class="NAV_LI" href="<?php echo SITEURL_USER; ?>">Home</a>
                     </li>
                     <li>
-                        <a class="NAV_LI" href="<?php echo SITEURL_USER; ?>about.php">About</a>
+                        <a class="NAV_LI" href="#">About</a>
                     </li>
                     <li>
-                        <a class="NAV_LI" href="<?php echo SITEURL_USER; ?>services.php">Services</a>
+                        <a class="NAV_LI" href="#">Services</a>
                     </li>
                     <li>
-                        <a class="NAV_LI" href="<?php echo SITEURL_USER; ?>property.php">Property</a>
-                    </li>
-                    <li>
-                        <a class="NAV_LI" href="<?php echo SITEURL_USER; ?>blog.php">Blog</a>
-                    </li>
-                    <li>
-                        <a class="NAV_LI" href="<?php echo SITEURL_USER; ?>contact.php">Contact</a>
-                    </li>
-                    <li>
-                        <a class="NAV_LI" target="_blank" href="<?php echo SITEURL_ADMIN; ?>login.php">Admin</a>
+                        <a class="NAV_LI" href="#">Contact</a>
                     </li>
                     <li class="dark-mode">
                         <div class="DAY_NIGHT">
@@ -114,7 +105,7 @@ include('login_check.php');
                                                 if ($userProfile != "") {
                                                     // Display image
                                                     ?>
-                                                    <img src="images/user/userProfile/<?php echo $userProfile ?>" alt="User Image">
+                                                    <img src="images/userProfile/<?php echo $userProfile ?>" alt="User Image">
                                                     <?php
                                                 } else {
                                                     // Display message
@@ -122,7 +113,7 @@ include('login_check.php');
                                                 }
                                             ?>
                                             <div class="dropdown" id="dropdownMenu">
-                                                <a class="NAV_LI dropdown-item" href="<?php echo SITEURL_USER; ?>profile.php?id=<?php echo $id; ?>&username=<?php echo $username; ?>">View Profile</a>
+                                                <a class="NAV_LI dropdown-item" href="#">View Profile</a>
                                                 <a class="NAV_LI dropdown-item" href="<?php echo SITEURL_USER; ?>logout.php">Logout</a>
                                             </div>
                                         </div>
@@ -150,9 +141,3 @@ include('login_check.php');
 			</div>
         </nav>
 	<!--===========================================================NAV_BAR_SECTION SECTION END====================================================-->
-
-        <div class="scroll_top">
-            <a href="#" class="to-top">
-                <i class="fas fa-chevron-up"></i>
-            </a>
-        </div>

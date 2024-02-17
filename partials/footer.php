@@ -9,14 +9,14 @@
             
                 <div class="logo">
 				    <a href="index.php">
-					    <img src="images/bg5.jpg" alt="Homeverse Logo">
-					    Home<span>verse.</span>
+					    <img src="images/bg5.jpg" alt="Tracehomes Logo">
+					    Trace<span>homes.</span>
 				    </a>
 			    </div>
     
                 <div class="footer-text">
                     <p>
-                        Choose your living style today. Here at Homeverse we help you live your dreams to the fullest by giving your the best property of your choice at all times.
+                        Choose your living style today. Here at Tracehomes we help you live your dreams to the fullest by giving your the best property of your choice at all times.
                     </p>
                 </div>
                 
@@ -47,7 +47,7 @@
                     </li>
 
                     <li>
-                        <a href="<?php echo SITEURL_USER; ?>profile.php?id=<?php echo $id; ?>&username=<?php echo $username; ?>">
+                        <a href="#">
                             My Account
                         </a>
                     </li>
@@ -63,19 +63,19 @@
                 <ul class="quicklinks">
     
                         <li>
-                            <a href="<?php echo SITEURL_USER; ?>about.php">
+                            <a href="#">
                                 About
                             </a>
                         </li>
     
                         <li>
-                            <a href="<?php echo SITEURL_USER; ?>blog.php">
+                            <a href="#">
                                 Blog
                             </a>
                         </li>
     
                         <li>
-                            <a href="<?php echo SITEURL_USER; ?>contact.php">
+                            <a href="#">
                                 Contact
                             </a>
                         </li>
@@ -139,7 +139,7 @@
                                           </svg>                              
                 
                                     </div>
-                                    <p class="text-primary">helpline@homeverse.com</p>
+                                    <p class="text-primary">helpline@tracehomes.com</p>
                                 </div>
                             </a>
                         </li>
