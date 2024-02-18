@@ -94,13 +94,13 @@ if (isset($_POST['submit'])) {
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'opiyodon9@gmail.com';
-            $mail->Password = 'opiyodonpaul';
+            $mail->Username = EMAIL_USERNAME;
+            $mail->Password = EMAIL_PASSWORD;
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
 
             // Recipient
-            $mail->setFrom('opiyodon9@gmail.com', 'Tracehomes');
+            $mail->setFrom(EMAIL_USERNAME, 'Tracehomes');
             $mail->addAddress($email);
 
             // Content
