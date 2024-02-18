@@ -66,7 +66,15 @@
 </html>
 
 <?php
-//Check whether the submit button is clicked or not
+// Include PHPMailer autoloader
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+require 'PHPMailer/src/Exception.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+// Check whether the submit button is clicked or not
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
 
@@ -79,19 +87,34 @@ if (isset($_POST['submit'])) {
 
     if ($res) {
         // Send reset password email
-        $to = $email;
-        $subject = 'Reset Your Password';
-        $message = 'Click the following link to reset your password: ' . SITEURL_USER . 'reset_password.php?token=' . $token;
-        $headers = 'From: opiyodon9@gmail.com';
+        $mail = new PHPMailer(true);
 
-        if (mail($to, $subject, $message, $headers)) {
+        try {
+            // SMTP settings
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'opiyodon9@gmail.com';
+            $mail->Password = 'opiyodonpaul';
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = 587;
+
+            // Recipient
+            $mail->setFrom('opiyodon9@gmail.com', 'Tracehomes');
+            $mail->addAddress($email);
+
+            // Content
+            $mail->isHTML(true);
+            $mail->Subject = 'Reset Your Password';
+            $mail->Body = 'Click the following link to reset your password: ' . SITEURL_USER . 'reset_password.php?token=' . $token;
+
+            $mail->send();
             $_SESSION['message'] = "<div class='SUCCESS'>Reset password link sent to your email</div>";
-        } else {
-            $_SESSION['message'] = "<div class='ERROR'>Failed to send reset password link</div>";
+        } catch (Exception $e) {
+            $_SESSION['message'] = "<div class='ERROR'>Failed to send reset password link. Error: {$mail->ErrorInfo}</div>";
         }
     } else {
         $_SESSION['message'] = "<div class='ERROR'>Email not found</div>";
     }
 }
-
 ?>
