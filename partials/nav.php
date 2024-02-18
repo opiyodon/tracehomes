@@ -39,8 +39,8 @@ include 'login_check.php';
 		<nav>
             <div class="logo">
 				<a href="index.php">
-					<img src="images/bg5.jpg" alt="Tracehomes Logo">
-					Trace<span>homes.</span>
+					<img src="images/logo.jpg" alt="Tracehomes Logo">
+					<span>Trace</span>homes.
 				</a>
 			</div>
             <menu class="NAV_TOGGLER_MENU /// NAV_TOGGLER_CLOSE">

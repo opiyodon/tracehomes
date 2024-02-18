@@ -9,8 +9,8 @@
             
                 <div class="logo">
 				    <a href="index.php">
-					    <img src="images/bg5.jpg" alt="Tracehomes Logo">
-					    Trace<span>homes.</span>
+					    <img src="images/logo.jpg" alt="Tracehomes Logo">
+					    <span>Trace</span>homes.
 				    </a>
 			    </div>
     
@@ -139,7 +139,7 @@
                                           </svg>                              
                 
                                     </div>
-                                    <p class="text-primary">helpline@tracehomes.com</p>
+                                    <p class="text-primary">opiyodon9@gmail.com</p>
                                 </div>
                             </a>
                         </li>

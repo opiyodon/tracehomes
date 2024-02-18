@@ -29,7 +29,7 @@
                 <input required class="INPUT" type="password" name="password" placeholder="Enter New Password...">
             </div>
             <div>
-                <input type="submit" name="submit" value="Save" class="btn">
+                <input type="submit" name="submit" value="Reset Password" class="btn">
             </div>
         </form>
     </div>
@@ -85,12 +85,12 @@ if (isset($_GET['token'])) {
         }
     } else {
         $_SESSION['message'] = "<div class='ERROR'>Invalid reset token</div>";
-        header('location:' . SITEURL_USER . 'forgotpassword.php');
+        header('location:' . SITEURL_USER . 'forgot_password.php');
         exit();
     }
 } else {
     $_SESSION['message'] = "<div class='ERROR'>Token not provided</div>";
-    header('location:' . SITEURL_USER . 'forgotpassword.php');
+    header('location:' . SITEURL_USER . 'forgot_password.php');
     exit();
 }
 ?>

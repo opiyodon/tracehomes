@@ -39,9 +39,9 @@
                 unset($_SESSION['no-login-message']);
             }
 
-            if (isset($_SESSION['update'])) {
-                echo $_SESSION['update'];
-                unset($_SESSION['update']);
+            if (isset($_SESSION['message'])) {
+                echo $_SESSION['message'];
+                unset($_SESSION['message']);
             }
 
             if (isset($_SESSION['register'])) {

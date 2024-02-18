@@ -29,7 +29,16 @@
                 <input required class="INPUT" type="email" name="email" placeholder="Enter your email">
             </div>
             <div>
-                <input type="submit" name="submit" value="Reset Password" class="btn">
+                <input type="submit" name="submit" value="Send Link" class="btn">
+            </div>
+
+            <div>
+                <p>
+                    Go back to Login page?
+                    <a class="LOGIN_LINK_ITEM" href="<?php echo SITEURL_USER; ?>login.php">
+                        Login
+                    </a>
+                </p>
             </div>
         </form>
     </div>
@@ -72,7 +81,7 @@ if (isset($_POST['submit'])) {
         // Send reset password email
         $to = $email;
         $subject = 'Reset Your Password';
-        $message = 'Click the following link to reset your password: ' . SITEURL_USER . 'resetpassword.php?token=' . $token;
+        $message = 'Click the following link to reset your password: ' . SITEURL_USER . 'reset_password.php?token=' . $token;
         $headers = 'From: opiyodon9@gmail.com';
 
         if (mail($to, $subject, $message, $headers)) {

@@ -45,7 +45,7 @@
                 <div>
                     <label class="w-full relative flex items-center h-full">
                         <input type="text" class="FILE-INPUT" placeholder="Choose Profile" readonly>
-                        <label for="userProfile" class="btn">Choose Image</label>
+                        <label for="userProfile" class="btn2">Choose Image</label>
                     </label>
                     <input type="file" id="userProfile" name="userProfile" hidden accept=".jpeg, .png, .jpg">
                 </div>
