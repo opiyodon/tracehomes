@@ -18,12 +18,6 @@
 
     <div class="resetPassword">
         <form action="" method="POST" class="MyResetPasswordForm">
-            <?php
-            if (isset($_SESSION['message'])) {
-                echo $_SESSION['message'];
-                unset($_SESSION['message']);
-            }
-            ?>
             <h1>Forgot Password</h1>
             <div>
                 <input required class="INPUT" type="email" name="email" placeholder="Enter your email">
@@ -109,12 +103,18 @@ if (isset($_POST['submit'])) {
             $mail->Body = 'Click the following link to reset your password: ' . SITEURL_USER . 'reset_password.php?token=' . $token;
 
             $mail->send();
-            $_SESSION['message'] = "<div class='SUCCESS'>Reset password link sent to your email</div>";
+            $_SESSION['message'] = "<div>Reset password link sent to your email</div>";
+            header('location:' . SITEURL_USER . 'success.php');
+            exit();
         } catch (Exception $e) {
-            $_SESSION['message'] = "<div class='ERROR'>Failed to send reset password link. Error: {$mail->ErrorInfo}</div>";
+            $_SESSION['messageB'] = "<div>Failed to send reset password link. Error: {$mail->ErrorInfo}</div>";
+            header('location:' . SITEURL_USER . 'error.php');
+            exit();
         }
     } else {
-        $_SESSION['message'] = "<div class='ERROR'>Email not found</div>";
+        $_SESSION['messageC'] = "<div>Email not found</div>";
+        header('location:' . SITEURL_USER . 'error.php');
+        exit();
     }
 }
 ?>

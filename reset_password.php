@@ -18,12 +18,6 @@
 
     <div class="resetPassword">
         <form action="" method="POST" class="MyResetPasswordForm">
-            <?php
-            if (isset($_SESSION['message'])) {
-                echo $_SESSION['message'];
-                unset($_SESSION['message']);
-            }
-            ?>
             <h1>Reset Password</h1>
             <div>
                 <input required class="INPUT" type="password" name="password" placeholder="Enter New Password...">
@@ -76,21 +70,23 @@ if (isset($_GET['token'])) {
             $res = mysqli_query($conn, $sql);
 
             if ($res) {
-                $_SESSION['message'] = "<div class='SUCCESS'>Password reset successfully</div>";
+                $_SESSION['message2'] = "<div class='SUCCESS'>Password reset successfully</div>";
                 header('location:' . SITEURL_USER . 'login.php');
                 exit();
             } else {
-                $_SESSION['message'] = "<div class='ERROR'>Failed to reset password</div>";
+                $_SESSION['message2B'] = "<div>Failed to reset password</div>";
+                header('location:' . SITEURL_USER . 'error.php');
+                exit();
             }
         }
     } else {
-        $_SESSION['message'] = "<div class='ERROR'>Invalid reset token</div>";
-        header('location:' . SITEURL_USER . 'forgot_password.php');
+        $_SESSION['message2C'] = "<div>Invalid reset token</div>";
+        header('location:' . SITEURL_USER . 'error.php');
         exit();
     }
 } else {
-    $_SESSION['message'] = "<div class='ERROR'>Token not provided</div>";
-    header('location:' . SITEURL_USER . 'forgot_password.php');
+    $_SESSION['message2D'] = "<div>Token not provided</div>";
+    header('location:' . SITEURL_USER . 'error.php');
     exit();
 }
 ?>
