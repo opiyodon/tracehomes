@@ -100,7 +100,16 @@ if (isset($_POST['submit'])) {
             // Content
             $mail->isHTML(true);
             $mail->Subject = 'Reset Your Password';
-            $mail->Body = 'Click the following link to reset your password: ' . SITEURL_USER . 'reset_password.php?token=' . $token;
+            $mail->Body = '
+    <div style="font-family: Arial, sans-serif; text-align: center;">
+        <h2 style="color: #333;">Tracehomes</h2>
+        <img src="http://localhost/tracehomes/images/logo.jpg" alt="Tracehomes Logo" width="150" height="150" style="border-radius: 50%; object-fit: cover;">
+        <hr style="border-top: 1px solid #ccc;">
+        <p style="color: #333;">Click the reset password button below to reset your password:</p>
+        <p><a href="' . SITEURL_USER . 'reset_password.php?token=' . $token . '" style="color: #fff; background-color: #8fc008; padding: 10px 20px; border-radius: 7px; text-decoration: none; display: inline-block;">Reset Password</a></p>
+    </div>
+';
+
 
             $mail->send();
             $_SESSION['message'] = "<div>Reset password link sent to your email</div>";
