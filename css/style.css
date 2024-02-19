@@ -471,6 +471,23 @@ ul li a:hover {
   letter-spacing: 2px;
 }
 
+/* ====================================================================================================================
+================================  404 PAGE  ==============================================================
+==================================================================================================================== */
+.page404 {
+  background: url(../images/4.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+}
+
 .INPUT {
   border-radius: 10px;
   color: var(--light_txt);

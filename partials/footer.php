@@ -124,7 +124,7 @@
                                           </svg>                              
                 
                                     </div>
-                                    0714358910
+                                    0714230692
                                 </div>
                             </a>
                         </li>
@@ -192,7 +192,7 @@
     
         <div class="DEV">
             <div class="ROW">
-                <p>&copy;2023 All rights reserved, Homeverse. Developed By 
+                <p>&copy;2024 All rights reserved, Homeverse. Developed By 
                     <a href="http://opiyodon.netlify.app/" target="_blank" class="text-primary underline">
                         Artkins
                     </a>
@@ -230,3 +230,4 @@
 	
 	</body>
 	</html>
+    
