@@ -116,7 +116,7 @@ if (isset($_POST['submit'])) {
             header('location:' . SITEURL_USER . 'success.php');
             exit();
         } catch (Exception $e) {
-            $_SESSION['messageB'] = "<div>Failed to send reset password link. Error: {$mail->ErrorInfo}</div>";
+            $_SESSION['messageB'] = "<div>Failed to send reset password link</div>";
             header('location:' . SITEURL_USER . 'error.php');
             exit();
         }
